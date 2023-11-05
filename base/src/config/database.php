@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mongdb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -92,6 +92,29 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
+        'mongodb' => [
+            'driver'   => 'mongodb',
+            'host'     => env('MONGO_HOST'),
+            'port'     => env('MONGO_PORT'),
+            'database' => env('MONGO_DATABASE'),
+            'username' => env('MONGO_USERNAME'),
+            'password' => env('MONGO_PASSWORD'),
+            'options'  => [
+                'database' => env('MONGO_AUTH_DATABASE')
+            ]
+        ],
+        
+        'mongodb2' => [
+            'driver'   => 'mongodb',
+            'host'     => env('MONGO_HOST2'),
+            'port'     => env('MONGO_PORT2'),
+            'database' => env('MONGO_DATABASE2'),
+            'username' => env('MONGO_USERNAME2'),
+            'password' => env('MONGO_PASSWORD2'),
+            'options'  => [
+                'database' => env('MONGO_AUTH_DATABASE2')
+            ]
+        ]
 
     ],
 
