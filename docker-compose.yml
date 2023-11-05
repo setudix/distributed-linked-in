@@ -1,0 +1,20 @@
+version: '3'
+
+networks:
+  arnab:
+    driver: bridge
+    name: arnab
+    ipam: 
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+
+services:
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      arnab:
+        ipv4_address: 172.20.0.2
