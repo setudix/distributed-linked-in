@@ -10,8 +10,8 @@ services:
       context: .
       dockerfile: Dockerfile.node.nginx
     container_name: user-service-nginx-node
-    ports:
-      - "12301:80"
+    # ports:
+    #   - "12301:80"
     volumes:
       - ./src:/usr/share/nginx/html
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
@@ -29,8 +29,8 @@ services:
     user: "setu:setu"
     volumes:
       - ./src:/usr/share/nginx/html
-    ports:
-      - "9000:9000"
+    # ports:
+    #   - "9000:9000"
     working_dir: /usr/share/nginx/html
     networks:
       arnab:
