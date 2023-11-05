@@ -21,3 +21,5 @@ WORKDIR /usr/share/nginx/html/
 RUN composer require mongodb/laravel-mongodb
 RUN composer require league/flysystem-aws-s3-v3
 RUN composer require protonemedia/laravel-splade
+
+RUN pecl install redis && docker-php-ext-enable redis
