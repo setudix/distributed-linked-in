@@ -9,5 +9,6 @@ class Post extends Model
 {
     protected $connection = 'mongodb';
     protected $collection = 'posts';
+    
     use HasFactory;
 }
