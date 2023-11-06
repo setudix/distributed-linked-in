@@ -38,8 +38,8 @@ RUN pecl install redis && \
 
 # USER setu
 
-RUN composer require mongodb/laravel-mongodb
-RUN composer require league/flysystem-aws-s3-v3
-RUN composer require protonemedia/laravel-splade
+# RUN composer require mongodb/laravel-mongodb
+# RUN composer require league/flysystem-aws-s3-v3
+# RUN composer require protonemedia/laravel-splade
 
-RUN composer update 
+# RUN composer update 

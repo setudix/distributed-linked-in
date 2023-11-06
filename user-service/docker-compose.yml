@@ -35,5 +35,8 @@ services:
     networks:
       arnab:
         ipv4_address: 172.20.0.4
-
+    environment:
+      - USER_SERVICE_URL="http://localhost:8080/user-service"
+      - POST_SERVICE_URL="http://localhost:8080/"
+      - NOTIF_SERVICE_URL="http://localhost:8080/notif-service"
 
