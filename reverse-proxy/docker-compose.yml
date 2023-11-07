@@ -1,0 +1,18 @@
+version: '3'
+
+networks:
+  arnab:
+    external: true
+
+services:
+
+  nginx-rev:
+    image: nginx:alpine3.18
+    container_name: nginx-rev
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      arnab: 
+        ipv4_address: 172.20.0.15
+    ports:
+      - "8080:80"
