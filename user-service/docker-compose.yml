@@ -36,8 +36,8 @@ services:
       arnab:
         ipv4_address: 172.20.0.4
     environment:
-      - USER_SERVICE_URL="http://localhost:8080/user-service/"
-      - POST_SERVICE_URL="http://localhost:8080/"
-      - NOTIF_SERVICE_URL="http://localhost:8080/notif-service/"
-      - NGINX_IP_ADDR="172.20.0.3"
+      - USER_SERVICE_URL="http://dslinked.in/user-service/"
+      - POST_SERVICE_URL="http://dslinked.in/"
+      - NOTIF_SERVICE_URL="http://dslinked.in/"
+      
 

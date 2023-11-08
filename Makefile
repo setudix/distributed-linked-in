@@ -27,3 +27,7 @@ user-service-shell:
 
 post-service-shell:
 	cd post-service && docker compose exec -it post-service-php bash
+
+restart-rev-proxy:
+	cd reverse-proxy && docker compose down
+	cd reverse-proxy && docker compose up -d 
