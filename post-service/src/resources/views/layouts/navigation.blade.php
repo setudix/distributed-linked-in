@@ -35,6 +35,9 @@
                     </x-nav-link>
                 @endguest
                 @auth
+                    <x-nav-link :href="route('notifications')" :active="request()->routeIs('notifications')" >
+                        Notifications
+                    </x-nav-link>
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
