@@ -9,6 +9,20 @@ class Post extends Model
 {
     protected $connection = 'mongodb';
     protected $collection = 'posts';
-    
+
     use HasFactory;
+
+    protected $fillable = [
+        'user_id', 
+        'content', 
+        'timestamps',
+    ];
+
+    public function photos() {
+        return $this->hasMany(Photo::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

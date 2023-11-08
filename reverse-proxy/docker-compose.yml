@@ -14,5 +14,5 @@ services:
     networks:
       arnab: 
         ipv4_address: 172.20.0.15
-    ports:
-      - "8080:80"
+    # ports:
+    #   - "8080:80"
