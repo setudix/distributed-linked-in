@@ -38,6 +38,6 @@ services:
     environment:
       - USER_SERVICE_URL="http://dslinked.in/user-service/"
       - POST_SERVICE_URL="http://dslinked.in/"
-      - NOTIF_SERVICE_URL="http://dslinked.in/"
+      - NOTIF_SERVICE_URL="http://dslinked.in/notif-service/"
       
 
