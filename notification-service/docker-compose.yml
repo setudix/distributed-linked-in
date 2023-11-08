@@ -1,0 +1,42 @@
+version: '3'
+
+networks:
+  arnab:
+    external: true
+
+services:
+  notification-service-nginx-node:
+    build:
+      context: .
+      dockerfile: Dockerfile.node.nginx
+    container_name: notification-service-nginx-node
+    # ports:
+    #   - "12301:80"
+    volumes:
+      - ./src:/usr/share/nginx/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - notification-service-php
+    networks:
+      arnab:
+        ipv4_address: 172.20.0.60
+
+  notification-service-php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: notification-service-php
+    user: "setu:setu"
+    volumes:
+      - ./src:/usr/share/nginx/html
+    # ports:
+    #   - "9000:9000"
+    working_dir: /usr/share/nginx/html
+    networks:
+      arnab:
+        ipv4_address: 172.20.0.70
+    environment:
+      - USER_SERVICE_URL="http://dslinked.in/user-service/"
+      - POST_SERVICE_URL="http://dslinked.in/"
+      - NOTIF_SERVICE_URL="http://dslinked.in/notif-service/"
+
