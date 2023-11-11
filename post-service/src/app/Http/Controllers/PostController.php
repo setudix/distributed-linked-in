@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\Photo;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -15,17 +17,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $user = Auth::user();
-        // dd($user->_id, $user->id);
-        $posts = Post::orderBy('created_at', 'desc')->get();
-        // // $post = Post::find('654bc39ae1a6bdaa4e02e3a9');
-        // // dd($post->photos);
 
-        // foreach($posts as $post){
-        //     if($post->_id == '654bc39ae1a6bdaa4e02e3a9') {
-        //         dd($post->photos);
-        //     }
-        // }
+        $posts = Post::orderBy('created_at', 'desc')->get();
+
         return view('dashboard', ['posts' => $posts,]);
     }
 
@@ -56,23 +50,32 @@ class PostController extends Controller
 
         $pictures = $request->file('images');
 
-        
-        foreach ($pictures as $picture)
-        {
-            $path = Storage::disk('minio')->put('photos', $picture);
+        if ($pictures != null) {
 
-            $photo = new Photo();
-            $photo->post_id = $post->_id;
-            $photo->path = $path;
-            $photo->save();
+            foreach ($pictures as $picture) {
+                $path = Storage::disk('minio')->put('photos', $picture);
+
+                $photo = new Photo();
+                $photo->post_id = $post->_id;
+                $photo->path = $path;
+                $photo->save();
+
+            }
+        }
+        $author = Auth::user()->name;
+        $usersToNotify = User::where('_id', '!=', auth()->id())->get();
+
+        // dd($usersToNotify);
+        foreach ($usersToNotify as $user) {
+            $notification = new Notification();
+            $notification->content = $author . ' has a new post';
+            $notification->user_id = $user->_id;
+            $notification->read_at = null;
+
+            // dd($notification, $post);
+            $notification->save();
 
         }
-
-        // $usersToNotify = User::where('id', '!=', auth()->id())->get();
-        // foreach ($usersToNotify as $user) 
-        // {
-        //     $user->notify(new NewPostNotification($post));
-        // }
         return redirect()->back();
     }
 

@@ -114,6 +114,17 @@ return [
             'options'  => [
                 'database' => env('MONGO_AUTH_DATABASE2')
             ]
+        ],
+        'mongodb3' => [
+            'driver'   => 'mongodb',
+            'host'     => env('MONGO_HOST3'),
+            'port'     => env('MONGO_PORT3'),
+            'database' => env('MONGO_DATABASE3'),
+            'username' => env('MONGO_USERNAME3'),
+            'password' => env('MONGO_PASSWORD3'),
+            'options'  => [
+                'database' => env('MONGO_AUTH_DATABASE3')
+            ]
         ]
 
     ],

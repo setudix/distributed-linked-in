@@ -28,6 +28,9 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/post', [PostController::class, 'store'])->name('store-post');
 });
 
+Route::get('/notifications',function(){})->middleware(['notification-redirect'])->name('notifications');
+
+
 Route::middleware(['user-redirect','auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
