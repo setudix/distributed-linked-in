@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/post', [PostController::class, 'store'])->name('store-post');
 });
 
-Route::get('/notifications',function(){})->name('notifications');
+Route::get('/notifications',function(){})->middleware(['notification-redirect'])->name('notifications');
 
 
 Route::middleware(['user-redirect','auth'])->group(function () {

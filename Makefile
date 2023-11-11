@@ -25,7 +25,7 @@ down:
 	cd post-service && cd postdb && docker compose down 
 	cd post-service && cd objectdb && docker compose down
 	cd user-service && docker compose down 
-	cd notification-service && docker compose up down
+	cd notification-service && docker compose down
 	cd notification-service && cd notificationdb && docker compose down
 	cd user-service && cd userdb && docker compose down
 	cd reverse-proxy && docker compose down 

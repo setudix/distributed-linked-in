@@ -39,4 +39,4 @@ services:
       - USER_SERVICE_URL="http://dslinked.in/user-service/"
       - POST_SERVICE_URL="http://dslinked.in/"
       - NOTIF_SERVICE_URL="http://dslinked.in/notification-service/"
-
+    # command: ["sh", "/usr/share/nginx/html/run.sh"]
